@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProdReview.Server", "ProdReview\Server\ProdReview.Server.csproj", "{DEABBB1B-5426-4609-BDD9-763A29E9E4A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProdReview.Server", "ProdReview\Server\ProdReview.Server.csproj", "{DEABBB1B-5426-4609-BDD9-763A29E9E4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProdReview.Client", "ProdReview\Client\ProdReview.Client.csproj", "{A97005D4-415E-4959-AE07-08540ECC3D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProdReview.Client", "ProdReview\Client\ProdReview.Client.csproj", "{A97005D4-415E-4959-AE07-08540ECC3D95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProdReview.Shared", "ProdReview\Shared\ProdReview.Shared.csproj", "{FE7EDF21-7170-49E9-85E0-95BDB6323A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProdReview.Shared", "ProdReview\Shared\ProdReview.Shared.csproj", "{FE7EDF21-7170-49E9-85E0-95BDB6323A6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

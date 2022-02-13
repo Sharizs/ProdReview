@@ -1,0 +1,21 @@
+﻿@page "/stores/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+
+<h3 class="card-title">Create New Store</h3>
+<hr />
+<br />
+
+
+<FormComponent ButtonText="Create Store" store="store" OnValidSubmit="@CreateMake" />
+
+@code {
+    Store store = new Store();
+
+    private async Task CreateMake()
+    {
+        await _client.PostAsJsonAsync("api/stores", store);
+        _navManager.NavigateTo("/stores/");
+    }
+}

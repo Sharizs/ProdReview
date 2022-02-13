@@ -20,6 +20,11 @@ namespace ProdReview.Server.Data
         }
 
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<User> User1 { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Store> Stores { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }

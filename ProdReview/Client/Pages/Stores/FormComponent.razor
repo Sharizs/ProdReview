@@ -1,0 +1,43 @@
+﻿<EditForm Model="@store" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <fieldset disabled="@Disabled">
+        <div class=" form-group">
+            <label>Store Name: </label>
+            <div>
+                <InputText @bind-Value="@store.StoreName" class="form-control" />
+                <ValidationMessage For="@(() => store.StoreName)" />
+            </div>
+        </div>
+        <div class=" form-group">
+            <label>Products Left: </label>
+            <div>
+                <InputNumber @bind-Value="@store.StoreLeft" class="form-control" />
+                <ValidationMessage For="@(() => store.StoreLeft)" />
+            </div>
+        </div>
+        <div class=" form-group">
+            <label>Store Rating (1 - 10): </label>
+            <div>
+                <InputNumber @bind-Value="@store.StoreRating" class="form-control" />
+                <ValidationMessage For="@(() => store.StoreRating)" />
+            </div>
+        </div>
+
+    </fieldset>
+
+    @if (!Disabled)
+    {
+        <button type="submit" class="btn btn-success btn-block">
+            @ButtonText
+        </button>
+    }
+    <BackToList Target="stores" />
+</EditForm>
+
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Store store { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

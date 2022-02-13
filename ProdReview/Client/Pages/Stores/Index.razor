@@ -1,0 +1,75 @@
+﻿@page "/stores/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+
+<h3 class="card-title">Store</h3>
+
+<a href="/stores/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Store
+</a>
+<br />
+<br />
+
+@if (Stores == null)
+{
+    <div class="alert alert-info">Loading Store...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Store Name</th>
+                <th>Products Left</th>
+                <th>Store Rating (1 - 10)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var store in Stores)
+            {
+                <tr>
+                    <td>@store.StoreName</td>
+                    <td>@store.StoreLeft</td>
+                    <td>@store.StoreRating</td>
+                    <td>
+                        <a href="/stores/view/@store.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/stores/edit/@store.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(store.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Store> Stores;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Stores = await _client.GetFromJsonAsync<List<Store>>("api/stores");
+    }
+
+    async Task Delete(int storeId)
+    {
+        var store = Stores.First(q => q.Id == storeId);
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {store.StoreName}?");
+        if (confirm)
+
+        {
+            await _client.DeleteAsync($"api/stores/{storeId}");
+            await OnInitializedAsync();
+        }
+    }
+
+}
